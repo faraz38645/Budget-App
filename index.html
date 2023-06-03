@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./App.js" defer></script>
+    <link rel="stylesheet" href="./Style.css">
+
+</head>
+<body>
+    <div id="App_Container">
+        <h1 class="intro">Budgeting App by Faraz(🔥);</h1>
+        <div id="budget_Sec">
+            
+            <h1 id="bud">Add Budget</h1>
+            <input type="text" id="value">
+            <button class="btn_bud" onclick="intailize_Budget()">Add Amount</button>
+
+        </div>
+        <div id="expense_Sec">
+            <form action="" class="form" id="myform" >
+                <h1 class="ex_h1">Add Expense</h1>
+
+                <label for="">Due Date</label>
+                <input type="date" name="" id="due_date" required>
+    
+                <label for="">Amount Spend</label>
+                <input type="text"   name="" id="Amount" required>
+                
+                <label for="">Category?</label>
+                <select name="" id="select" required>
+                    <option value="Restrurant">Restrurant</option>
+                    <option value="Grocery">Grocery</option>
+                    <option value="Shoping">Shoping</option>
+                    <option value="Transport">Transport</option>
+                </select>
+                
+                <label for="">Description</label>
+                <input type="text" name="" id="des">
+                
+                <label for="">Payment Date</label>
+                <input type="date" name="" id="pay_date">
+                <!-- <input type="submit" value="Submit" id="SUB"> -->
+                <button  class="submit_btn" id="btn_Sub" >Add Expense</button>
+            </form>
+
+            
+        </div>
+        <div id="Expense-List_Sec">
+            <div id="line"></div>
+            <h1>Expense List</h1>
+            <!-- <p class="test">Restrurant<span class="date">20/20/2020</span><span class="total">200</span><span class="icon"><img src="./ICONS/groceries.png" alt=""></span><span class="delete" ><img id="del_image" src="./ICONS/delete.png" alt=""></span><span id="edit" class="edit"><img src="./ICONS/edit.png" alt=""></span></p>
+            <p class="test">Restrurant<span class="date">20/20/2020</span><span class="total">200</span><span class="icon"><img src="./ICONS/groceries.png" alt=""></span><span class="delete" ><img id="del_image" src="./ICONS/delete.png" alt=""></span><span id="edit" class="edit"><img src="./ICONS/edit.png" alt=""></span></p>
+            <p class="test">Restrurant<span class="date">20/20/2020</span><span class="total">200</span><span class="icon"><img src="./ICONS/groceries.png" alt=""></span><span class="delete" ><img id="del_image" src="./ICONS/delete.png" alt=""></span><span id="edit" class="edit"><img src="./ICONS/edit.png" alt=""></span></p> -->
+            <!-- <p class="test2"><span class="Budget">Budget</span>  <span class="Total_Amount">Expense </span>  <span class="Balance">Balance</span>
+            <br><br><span id="budget">200</span> <span id="Total">200</span> <span id="Bal">00</span></p> -->
+
+            <div class="test2">
+                <div class="section1">
+                    <h1>Budget</h1>
+                    <h2 id="budget">00</h2>
+                </div>
+                <div class="section2">
+                    <h1>Expense</h1>
+                    <h2 id="Total">00</h2>
+                </div>
+                <div class="section3">
+                    <h1>Balance</h1>
+                    <h2 id="Bal">00</h2>
+                </div>
+            </div>
+           
+            
+        </div>
+
+    </div>
+    
+</body>
+</html>

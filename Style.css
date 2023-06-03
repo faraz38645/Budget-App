@@ -1,0 +1,286 @@
+
+@font-face {
+    font-family: Russo1;
+    src: url(./FONTS/MartianMono-VariableFont_wdth\,wght.ttf);
+}
+
+body{
+    background-color: #01061a;
+    font-family: Russo1;
+    color:#e4e5ef ;
+    font-size: small;
+    
+}
+.intro{
+    margin-left: 35%;
+}
+body #budget_Sec{
+    color: #e4e5ef;
+    position: absolute;
+    background-color: #3d44be;
+    border-radius: 20px;
+    width: 30%;
+    height: 23%;
+    left: 10%;
+    top: 10%;
+    text-align: center; 
+    
+}
+
+#line{
+    position: absolute;
+    border: 2px solid #d83c7aa8;
+    width: 84%;
+    top:22%;
+    left: 9%;
+}
+
+
+
+button{
+    border: #d83c7a;
+    background-color:#d83c7a ;
+    border-radius: 20px;
+    padding: 2%;
+    color: #e4e5ef;
+    font-weight: bold;
+    transition: 0.5s ease-in-out; 
+    outline: none;
+}
+
+button:hover{
+    color: black;
+    background-color: white;
+    transition: 0.1s;
+    transform: scale(1.1);
+}
+
+input ,select{
+    padding: 1px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #555;
+    font-weight: bold;
+    
+  }
+
+
+
+
+.btn_bud{
+    display: block;
+    margin-left:38%;
+    margin-top: 7%;
+
+}
+
+
+#expense_Sec{
+
+    width: 30%;
+    height: 59%;
+    left: 10%;
+    top: 35%;
+    border-radius: 6%;
+    position: absolute;
+    background-color: #3d44be;
+    
+
+
+}
+
+.form{
+    margin-top: -2%;
+}
+
+label,input{
+    display: block;
+    
+}
+label{
+    margin-left: 10%;
+    margin-top: 3%;
+
+
+}
+.ex_h1{
+    margin-left: 30%;
+    margin-top: 4%;
+}
+
+#select{
+
+    margin-top: 3%;
+    margin-left:11%;
+    width: 40%;
+
+}
+
+input{
+    margin-left: 10%;
+    margin-top: 3%;
+    width:66% ;
+}
+
+.submit_btn{
+    margin-left: 39%;
+    margin-top: 7%;
+    width: 21%;
+}
+
+
+#Expense-List_Sec{
+    width: 40%;
+    height: 84%;
+    left: 53%;
+    top: 10%;
+    border-radius: 6%;
+    position: absolute;
+    background-color: #3d44be;
+    overflow-y: auto;
+}
+
+#Expense-List_Sec h1{
+    margin-left: 35%;
+    margin-top: 4%;
+}
+
+
+.test{
+    font-weight: bolder;
+    color: #01061a;
+    border: 26px solid #E1F8DC  ;
+    width: 82%;
+    height: 7%;
+    margin-left: 3%;
+    background-color: #E1F8DC;
+    border-radius: 20px;
+    padding-left: 2%;
+    
+}
+.icon img{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 5%;
+    margin-top: -6%;
+}
+
+
+.test2{
+    font-weight: bolder;
+    color: #01061a;
+    border: 26px solid #3d44be  ;
+    width: 82%;
+    height: 7%;
+    margin-left: 3%;
+    background-color: #3d44be;
+    border-radius: 20px;
+    padding-left: 2%;
+    
+}
+
+.section1,.section2,.section3{
+    background-color: #3d44be;
+    color:#E1F8DC;
+    border: 2px solid #3d44be;
+    width: 19%;
+    height: 12%;
+    position: absolute;
+    top: 9%;
+    left: 3%;
+
+}
+.section2{
+    top: 9%;
+    left: 35%;
+}
+
+.section3{
+    top: 9%;
+    left: 70%;
+}
+
+#budget{
+
+    margin-left:60%;
+}
+
+#Total{
+
+    margin-left:60%;
+}
+#Bal{
+
+    margin-left:60%;
+}
+
+
+
+
+
+
+
+
+.Balance{
+    margin-left: 28%;
+}
+
+
+.Total_Amount{
+    margin-left: 31%;
+}
+
+
+.test .total{
+    position: absolute;
+    left: 75%;
+    margin-top: -5%;
+    
+
+}
+
+.date{
+    display: block;
+    padding-top: 1%;
+}
+
+.days{
+    display: block;
+    padding-top: 1%;
+}
+
+
+
+.delete img{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 83%;
+    margin-top: -5%;
+    transition: 0.5s ease-in-out; 
+}
+
+
+.delete img:hover{
+    transition: 0.1s;
+    transform: scale(1.4);
+}
+
+
+.edit img{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 88.5%;
+    margin-top: -5%;
+    transition: 0.5s ease-in-out;
+}
+
+.edit img:hover{
+    transition: 0.1s;
+    transform: scale(1.4);
+}
+
+
