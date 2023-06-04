@@ -230,7 +230,6 @@ setInterval(function() {
     console.log(del_btn.length);
     for (var i = 0; i < del_btn.length; i++) {
         del_btn[i].addEventListener("click", Remove);
-        console.log(budget_Data.expense,"Budget: ",budget_Data.budget);
     }
 }, 1000);
 
