@@ -6,7 +6,8 @@
 // i had defined an Object In which there are two properties Budget which is set to null and a Empty Array(Expense)
 var budget_Data={
     budget:null,
-    expense:[]
+    expense:[],
+    inc:0
 }
 
 
@@ -14,7 +15,7 @@ var budget_Data={
 function Amount_Spend(value){
 
         this.value =value;
-        budget_Data.expense.unshift(value);
+        budget_Data.expense.push(value);
         // let remain=budget_Data.budget-value;
         // budget_Data.budget=remain
         console.log(budget_Data.budget);
@@ -38,11 +39,13 @@ function Amount_remain(value){
 
 //function to intialize the budget
 function intailize_Budget(){
+
     let bud =document.getElementById("value").value;
     budget_Data.budget=bud;
     console.log(budget_Data.budget);
     document.getElementById("budget").innerHTML=bud;
     document.getElementById("value").value=null;
+
 }
 
 
@@ -137,7 +140,10 @@ function val(date,amount,category,des,pay_date){
     //nodeto.appendChild(Amount.setAttribute("class","total"));
     //nodeto.classList.add("test");
     nodeto.setAttribute("class","test")
+    nodeto.setAttribute("id","test"+budget_Data.inc);
+    budget_Data.inc+=1;
     parent_div.appendChild(nodeto);
+
 }
 
 
@@ -146,6 +152,7 @@ After that Creating Element using val function by passing nessacery values of fo
 and handling possible error.*/
 function Form_values(e,f1="due_date",f2="Amount",f3="select",f4="des",f5="pay_date"){
     e.preventDefault();
+
     if(budget_Data.budget === null ){
         alert("DEFINE BUDGET");
        
@@ -156,111 +163,155 @@ function Form_values(e,f1="due_date",f2="Amount",f3="select",f4="des",f5="pay_da
     }
     
     else{
-        if(budget_Data.budget === null ){
-            alert("DEFINE BUDGET");
-           
+        let amount=parseInt(document.getElementById(f2).value);
+    
+    
+        Amount_Spend(amount);
+    
+        let sum=0;
+        for(let i =0 ; i < budget_Data.expense.length ;i++){
+            sum+=parseInt(budget_Data.expense[i]);
         }
-        
-        else{
+        console.log(sum);
             
-            let amount=parseInt(document.getElementById(f2).value);
+        console.log(budget_Data.expense);
+        console.log("SUM",sum, budget_Data.budget);
     
+        let remain=Amount_remain(amount);
     
-            Amount_Spend(amount);
-    
-            let sum=0;
-            for(let i =0 ; i < budget_Data.expense.length ;i++){
-                sum+=parseInt(budget_Data.expense[i]);
-            }
-            console.log(sum);
-            
+        if(remain < 0  ){
+            alert("LIST EXPENSE IN ACCORDANCE TO YOUR BUDGET");
+            console.log("asdsad",sum," budget",budget_Data.budget);
+
+            let re_add=budget_Data.expense.pop();
+            budget_Data.budget+=re_add;
             console.log(budget_Data.expense);
-            console.log("SUM",sum, budget_Data.budget);
-    
-            let remain=Amount_remain(amount);
-    
-            if(remain < 0  ){
-                alert("LIST EXPENSE IN ACCORDANCE TO YOUR BUDGET");
-                console.log("asdsad",sum," budget",budget_Data.budget);
-    
-                budget_Data.expense.shift();
-                console.log(budget_Data.expense);
     
         
-            }
-            else{
-                let due_date=document.getElementById(f1).value;
+        }
+        else{
+            let due_date=document.getElementById(f1).value;
                
             //let amount=parseInt(document.getElementById(f2).value);
-                let category=document.getElementById(f3).value;
-                let des=document.getElementById(f4).value;
-                let pay_date=document.getElementById(f5).value;
+            let category=document.getElementById(f3).value;
+            let des=document.getElementById(f4).value;
+            let pay_date=document.getElementById(f5).value;
     
-                console.log("WORKING.....",due_date,amount,category,des,pay_date,budget_Data.expense);
-                document.getElementById("Total").innerHTML=sum;
-                //let remain=Amount_remain(amount);
-                document.getElementById("Bal").innerHTML=remain;
-                val(due_date,amount,category,des,pay_date);
-            }
-    
-    
-            // else(budget_Data<sum){
-            //     console.log("con2");
-            //     alert("Enter Correct Expense Value Should be lower then Budget");
-            //     budget_Data.expense.shift;
-            // }
-            
-            
-            
+            console.log("WORKING.....",due_date,amount,category,des,pay_date,budget_Data.expense);
+            document.getElementById("Total").innerHTML=sum;
+            //let remain=Amount_remain(amount);
+            document.getElementById("Bal").innerHTML=remain;
+            val(due_date,amount,category,des,pay_date);
         }
+            
+            
+            
+            
+        
     }
     
 
 
 }
+
+
 var button = document.getElementById("btn_Sub");
 button.addEventListener('click',Form_values);
 
 
+
+//it will check for newly defined paragraph every 1 second to(delete and edit) the selected paragraph;
 var del_btn;
-setInterval(function() {del_btn= document.getElementById("del_image");
-del_btn.addEventListener('click',Remove);}, 1000);
+setInterval(function() {
+
+    del_btn= document.getElementsByTagName("img");
+    //del_btn.addEventListener('click',Remove);
+    //console.log("working",del_btn);
+    console.log(del_btn.length);
+    for (var i = 0; i < del_btn.length; i++) {
+        del_btn[i].addEventListener("click", Remove);
+        console.log(budget_Data.expense,"Budget: ",budget_Data.budget);
+    }
+}, 1000);
 
 
-//To remove paragraph on clicking the icon which has an id="del_image";
-function Remove(){
-    let val = budget_Data.expense.pop();
 
+
+
+
+
+
+//To remove paragraph on clicking the icon which has an id="del_image"  and Recalculating Figures;
+function Remove(event){
+    // let val = budget_Data.expense.pop();
+    let tot_bud=document.getElementById("budget");
     let bal=document.getElementById("Bal");
     let exp=document.getElementById("Total");
 
-    exp=parseInt(exp.textContent)
-
-    console.log(bal.textContent);
+    exp=parseInt(exp.textContent);
+    tot_bud=parseInt(tot_bud.textContent);
     bal=parseInt(bal.textContent);
+    
+    let par=event.currentTarget;
+    par=par.parentNode.parentNode;
+    console.log("answer: ",par.getAttribute("id"));
 
-    document.getElementById("Total").innerHTML=exp-val;
+    let id=par.getAttribute("id");
+    console.log("id",id);
 
-    let reAdd=bal+val;
-    document.getElementById("Bal").innerHTML=reAdd;
-    budget_Data.budget=reAdd;
-    console.log("clicking");
-    let par=del_btn.parentNode.parentNode;
-    par.remove();
+
+    p_btn= document.getElementsByTagName("p");
+    console.log(p_btn.length);
+    
+    let select_value=0;
+    for (var i = 0; i < p_btn.length; i++) {
+
+        if(id === p_btn[i].getAttribute("id") ){
+            console.log("In if",id," index: ",i);
+
+            if(event.currentTarget.getAttribute("src") === "./ICONS/delete.png"){ //to del the para
+                console.log("clicked");
+                console.log("Target: ",event.currentTarget.getAttribute("src"));
+                var paragraph = event.currentTarget.parentNode.parentNode; // Get the clicked paragraph
+
+            //console.log("value at index",i," -->",budget_Data.expense.splice(i, 1));
+                select_value=budget_Data.expense.splice(i, 1);
+
+                console.log("value of selected: ",select_value,"using parse",parseInt(select_value));
+                budget_Data.budget+= parseInt(select_value);
+                document.getElementById("Total").innerHTML=exp-select_value;
+
+                document.getElementById("Bal").innerHTML=(bal + parseInt(select_value));
+
+                paragraph.remove(paragraph.children[i]);
+            }
+            else if(event.currentTarget.getAttribute("src") === "./ICONS/edit.png"){  //to edit the para
+                var paragraph = event.currentTarget.parentNode.parentNode;
+
+                //paragraph.childNodes[2]
+
+                let edit_numb =parseInt(prompt("PLEASE RE-ENTER THE AMOUNT: "));
+                budget_Data.expense[i]=edit_numb;
+
+                let sum=0;
+                for(let j =0 ; j < budget_Data.expense.length ;j++){
+                    sum+=parseInt(budget_Data.expense[j]);
+                }
+                console.log("value of budget",tot_bud,"  ","value of Sum: ",sum);
+                
+                document.getElementById("Total").innerHTML=sum;
+                paragraph.childNodes[2].innerHTML="-"+edit_numb+"$";
+
+                budget_Data.budget=(tot_bud-sum);
+
+                document.getElementById("Bal").innerHTML=(tot_bud-sum);
+
+
+
+            }
+
+        }
+
+    }
 }
 
-
-
-// function Remove(event) {
-//     const parent = document.getElementById("Expense-List_Sec");
-//     const p = event.target.parentNode; // Get the parent <p> element of the clicked <span>
-//     parent.removeChild(p); // Remove the <p> element from its parent
-//   }
-  
-//   // Add event listener to all elements with class "icon"
-//   const icons = document.getElementById("delete");
-
-//   for (let i = 0; i < icons.length; i++) {
-//     console.log("working");
-//     icons[i].addEventListener("click", Remove);
-//   }
