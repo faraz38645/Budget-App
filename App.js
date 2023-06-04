@@ -181,7 +181,7 @@ function Form_values(e,f1="due_date",f2="Amount",f3="select",f4="des",f5="pay_da
     
         if(remain < 0  ){
             alert("LIST EXPENSE IN ACCORDANCE TO YOUR BUDGET");
-            console.log("asdsad",sum," budget",budget_Data.budget);
+            console.log("checking: ",sum," budget",budget_Data.budget);
 
             let re_add=budget_Data.expense.pop();
             budget_Data.budget+=re_add;
@@ -272,7 +272,7 @@ function Remove(event){
             if(event.currentTarget.getAttribute("src") === "./ICONS/delete.png"){ //to del the para
                 console.log("clicked");
                 console.log("Target: ",event.currentTarget.getAttribute("src"));
-                var paragraph = event.currentTarget.parentNode.parentNode; // Get the clicked paragraph
+                var paragraph = event.currentTarget.parentNode.parentNode; 
 
             //console.log("value at index",i," -->",budget_Data.expense.splice(i, 1));
                 select_value=budget_Data.expense.splice(i, 1);
